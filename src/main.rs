@@ -1,6 +1,18 @@
 use macroquad::prelude::*;
 
-#[macroquad::main("people simulation")]
+fn window_conf() -> Conf {
+    Conf {
+        window_title: "people simulation".to_owned(),
+        window_width: 800,
+        window_height: 700,
+        fullscreen: false,
+        window_resizable: false,
+        ..Default::default()
+    }
+}
+
+
+#[macroquad::main(window_conf)]
 async fn main() {
     
     let tst1 = load_texture("assets/bazinga.png").await.unwrap();
