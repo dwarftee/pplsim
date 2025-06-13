@@ -18,8 +18,8 @@ async fn main() {
     let tst1 = load_texture("assets/bazinga.png").await.unwrap();
     tst1.set_filter(FilterMode::Nearest);
 
-    let x = 100.0;
-    let y = 100.0;
+    let x = 300.0;
+    let y = 200.0;
 
     loop {
         clear_background(SKYBLUE);
