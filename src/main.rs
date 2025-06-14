@@ -14,23 +14,49 @@ fn window_conf() -> Conf {
 
 #[macroquad::main(window_conf)]
 async fn main() {
-    
-    let tst1 = load_texture("assets/bazinga.png").await.unwrap();
-    tst1.set_filter(FilterMode::Nearest);
+ 
+    //init images
 
-    let x = 300.0;
-    let y = 200.0;
+    let b1 = load_texture("assets/bazinga.png").await.unwrap();
+    b1.set_filter(FilterMode::Nearest);
+
+    let b2 = load_texture("assets/balinga.png").await.unwrap();
+    b2.set_filter(FilterMode::Nearest);
+
+    //variables
+
+    let red = 59.0/255.0;
+    let green = 196.0/255.0;
+    let blue = 127.0/255.0;
+    
+    let b1x = 100.0;
+    let b1y = 100.0;
+    let b2x = 500.0;
+    let b2y = 500.0;
+    
+    //main loop
 
     loop {
-        clear_background(SKYBLUE);
+        clear_background(Color::new(red,green,blue,1.0));
 
         draw_texture_ex(
-            &tst1,
-            x,
-            y,
+            &b1,
+            b1x,
+            b1y,
             WHITE,
             DrawTextureParams {
                 dest_size: Some(Vec2::new(200.0,200.0)),
+                ..Default::default()
+            },
+        );
+
+        draw_texture_ex(
+            &b2,
+            b2x,
+            b2y,
+            WHITE,
+            DrawTextureParams {
+                dest_size: Some(Vec2::new(200.0, 200.0)),
                 ..Default::default()
             },
         );
