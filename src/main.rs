@@ -15,6 +15,7 @@ fn window_conf() -> Conf {
 
 #[macroquad::main(window_conf)]
 async fn main() {
+    macroquad::rand::srand(macroquad::miniquad::date::now() as u64);
  
     //init images
 
@@ -26,6 +27,9 @@ async fn main() {
 
     let apple = load_texture("assets/apple.png").await.unwrap();
     apple.set_filter(FilterMode::Nearest);
+
+    let water = load_texture("assets/water.png").await.unwrap();
+    water.set_filter(FilterMode::Nearest);
 
     //variables
     
@@ -44,6 +48,9 @@ async fn main() {
     let apple2y: f32 = macroquad::rand::gen_range(10.0,640.0);
     let apple3x: f32 = macroquad::rand::gen_range(10.0,740.0);
     let apple3y: f32 = macroquad::rand::gen_range(10.0,640.0);
+
+    let waterx: f32 = macroquad::rand::gen_range(10.0, 740.0);
+    let watery: f32 = macroquad::rand::gen_range(10.0, 640.0);
 
     //main loop
 
@@ -68,6 +75,17 @@ async fn main() {
             WHITE,
             DrawTextureParams {
                 dest_size: Some(Vec2::new(100.0, 100.0)),
+                ..Default::default()
+            },
+        );
+
+        draw_texture_ex(
+            &water,
+            waterx,
+            watery,
+            WHITE,
+            DrawTextureParams {
+                dest_size: Some(Vec2::new(200.0, 200.0)),
                 ..Default::default()
             },
         );
